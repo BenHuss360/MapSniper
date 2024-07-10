@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "Advanced Map Selector",
+  "version": "1.0",
+  "description": "Select and capture areas on Google Maps with ratio constraints",
+  "permissions": [
+    "scripting",
+    "downloads",
+    "tabs"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "action": {
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.google.com/maps/*"],
+      "js": ["content.js"],
+      "css": ["styles.css"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["map_coordinates.js"],
+      "matches": ["https://www.google.com/*"]
+    }
+  ]
+}
